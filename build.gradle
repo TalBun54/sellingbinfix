@@ -1,0 +1,142 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.140'
+    id 'idea'
+}
+
+version = project.mod_version
+group = project.mod_group_id
+
+repositories {
+    mavenCentral()
+}
+
+
+base {
+    archivesName = project.mod_id
+}
+
+// Java 21 for Minecraft 1.21.1
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+// -----------------------------
+// Source sets
+// -----------------------------
+sourceSets {
+    main {
+        java { srcDirs = ['src/main/java'] }
+        resources {
+            srcDirs = [
+                    'src/main/resources',      // contains META-INF/neoforge.mods.toml and mixins JSON
+                    'src/generated/resources'  // optional generated resources
+            ]
+        }
+    }
+}
+
+// -----------------------------
+// NeoForge setup
+// -----------------------------
+neoForge {
+    version = project.neo_version
+
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    // Attach mod to sourceSet
+    mods {
+        "${project.mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+
+    // Default run configurations
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        data {
+            data()
+            programArguments.addAll(
+                    '--mod', project.mod_id,
+                    '--all',
+                    '--output', file('src/generated/resources/').getAbsolutePath(),
+                    '--existing', file('src/main/resources/').getAbsolutePath()
+            )
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+}
+
+// -----------------------------
+// Process resources
+// -----------------------------
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+// -----------------------------
+// Jar task ensures resources are included
+// -----------------------------
+tasks.named('jar') {
+    from(sourceSets.main.output)  // includes both classes + resources
+}
+
+// -----------------------------
+// Dependencies
+// -----------------------------
+dependencies {
+    // Optional runtime-only mods or libraries
+    // localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+    // implementation files("libs/some-mod.jar")
+}
+
+// -----------------------------
+// Publishing (optional)
+// -----------------------------
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}
+
+// -----------------------------
+// Java compilation
+// -----------------------------
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// -----------------------------
+// IDEA
+// -----------------------------
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}

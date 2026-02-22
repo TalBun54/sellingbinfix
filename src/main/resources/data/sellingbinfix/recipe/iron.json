@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "type": "neoforge:components",
+      "items": "sellingbin:selling_bin",
+      "components": {
+        "sellingbin:bin_material": "wood"
+      }
+    }
+  },
+  "result": {
+    "id": "sellingbin:selling_bin",
+    "components": {
+      "sellingbin:bin_material": "iron",
+      "sellingbin:bin_mode": "player_bound"
+    },
+    "count": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "#i#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "id": "sellingbin:selling_bin",
+    "components": {
+      "sellingbin:bin_material": "wood",
+      "sellingbin:bin_mode": "player_bound"
+    },
+    "count": 1
+  }
+}

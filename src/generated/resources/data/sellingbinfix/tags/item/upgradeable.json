@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#c:enchantables",
+    {
+      "id": "sellingbin:selling_bin",
+      "required": false
+    }
+  ]
+}

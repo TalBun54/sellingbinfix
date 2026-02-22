@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.example.sellingbinfix.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "IngredientMixin",
+    "RecipeManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
