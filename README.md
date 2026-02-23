@@ -9,7 +9,7 @@ A Server-Side NeoForge mod for Minecraft 1.21.1 that fixes some bugs from the [S
 
 ## 📦 Requirements
 This mod fixes some Selling Bin Bugs and requires the following to be installed to run this mod:
-* **[NeoForge](https://neoforged.net/)** (Version 21.1.215 or higher)
+* **[NeoForge](https://neoforged.net/)** (Tested on Version 21.1.215 and higher)
 * **[Selling Bin](https://www.curseforge.com/minecraft/mc-mods/selling-bin)** (Version 1.1.1 or higher)
 
 ## 🚀 Installation
