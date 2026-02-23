@@ -14,7 +14,7 @@ This mod fixes some Selling Bin Bugs and requires the following to be installed 
 
 ## 🚀 Installation
 1. Ensure you have NeoForge installed for 1.21.1.
-2. Download the latest `.jar` from the [Releases](https://github.com/YOUR_USERNAME/YOUR_REPO/releases) page.
+2. Download the latest `.jar` from the [Releases](https://github.com/TalBun54/sellingbinfix/releases) page.
 3. Place both this mod and the original **Selling Bin** mod into your `.minecraft/mods` folder.
 
 ## 💻 For Developers
