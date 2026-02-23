@@ -25,4 +25,4 @@ If you want to build this mod from source:
 4. Use `./gradlew build` to create the final JAR.
 
 ## ⚖️ License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE.txt).
