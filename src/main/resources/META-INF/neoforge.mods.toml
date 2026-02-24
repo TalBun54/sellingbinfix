@@ -5,11 +5,12 @@ license="MIT"
 
 [[mods]]
 modId="sellingbinfix"
-version="1.0.0"
+version="1.1.0"
 displayName="Selling Bin Fixes"
 description='Fixes some issues of Selling Bin by jflec like: Selling Bin Recipes/Enchanted Items are smithable again'
 logoFile="icon.png"
 authors="TalGITV"
+displayTest="IGNORE_ALL_VERSION"
 
 [[dependencies.sellingbinfix]]
 modId="neoforge"
